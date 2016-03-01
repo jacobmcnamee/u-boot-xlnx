@@ -19,6 +19,7 @@
 #define CONFIG_SYS_NO_FLASH
 
 #define CONFIG_ZYNQ_SDHCI0
+#define CONFIG_ZYNQ_QSPI
 
 #include <configs/zynq-common.h>
 
