@@ -152,12 +152,7 @@ static int _serial_getc(struct udevice *dev)
 
 static int _serial_tstc(struct udevice *dev)
 {
-	struct dm_serial_ops *ops = serial_get_ops(dev);
-
-	if (ops->pending)
-		return ops->pending(dev, true);
-
-	return 1;
+	return 0;
 }
 
 void serial_putc(char ch)
