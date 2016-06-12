@@ -10,6 +10,7 @@ obj-y	:= board.o
 # Copied from Xilinx SDK 2014.4
 hw-platform-$(CONFIG_TARGET_ZYNQ_ZED)		:= zed_hw_platform
 hw-platform-$(CONFIG_TARGET_ZYNQ_MICROZED)	:= MicroZed_hw_platform
+hw-platform-$(CONFIG_TARGET_ZYNQ_PIKSI)		:= MicroZed_hw_platform
 hw-platform-$(CONFIG_TARGET_ZYNQ_ZC702)		:= ZC702_hw_platform
 hw-platform-$(CONFIG_TARGET_ZYNQ_ZC706)		:= ZC706_hw_platform
 hw-platform-$(CONFIG_TARGET_ZYNQ_ZYBO)		:= zybo_hw_platform
