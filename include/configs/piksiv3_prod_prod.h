@@ -19,14 +19,14 @@
 
 #define CONFIG_HW_WDT_DIS_MIO 0
 
-#ifdef CONFIG_TPL_BUILD
+/*#ifdef CONFIG_TPL_BUILD*/
 
 #define CONFIG_TPL_BOOTSTRAP_RX0_MIO 10
 #define CONFIG_TPL_BOOTSTRAP_TX0_MIO 11
 #define CONFIG_TPL_BOOTSTRAP_RX1_MIO 13
 #define CONFIG_TPL_BOOTSTRAP_TX1_MIO 12
 
-#endif
+/*#endif*/
 
 #include <configs/piksiv3_prod.h>
 

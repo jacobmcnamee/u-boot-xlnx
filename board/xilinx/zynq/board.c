@@ -424,6 +424,33 @@ int spl_board_load_image(void)
 
 #ifdef CONFIG_TPL_BUILD
   /* TPL */
+
+
+
+  /* Assert HW_WDT_DIS */
+  zynq_slcr_unlock();
+  writel(MIO_CFG_OUTPUT, &slcr_base->mio_pin[CONFIG_HW_WDT_DIS_MIO]);
+  zynq_slcr_lock();
+  zynq_gpio_cfg_output(CONFIG_HW_WDT_DIS_MIO);
+  zynq_gpio_output_write(CONFIG_HW_WDT_DIS_MIO, 1);
+
+  /* Configure TX0 and TX1 as output */
+  zynq_slcr_unlock();
+  writel(MIO_CFG_OUTPUT, &slcr_base->mio_pin[CONFIG_TPL_BOOTSTRAP_TX0_MIO]);
+  writel(MIO_CFG_OUTPUT, &slcr_base->mio_pin[CONFIG_TPL_BOOTSTRAP_TX1_MIO]);
+  zynq_slcr_lock();
+  zynq_gpio_cfg_output(CONFIG_TPL_BOOTSTRAP_TX0_MIO);
+  zynq_gpio_cfg_output(CONFIG_TPL_BOOTSTRAP_TX1_MIO);
+  bool state = false;
+  while (1) {
+    zynq_gpio_output_write(CONFIG_TPL_BOOTSTRAP_TX0_MIO, state ? 1 : 0);
+    zynq_gpio_output_write(CONFIG_TPL_BOOTSTRAP_TX1_MIO, state ? 0 : 1);
+    state = !state;
+    udelay(1000);
+  }
+
+
+
   zynq_slcr_unlock();
 
   /* Configure RX0, RX1, and TX0 pins as input pullup */
