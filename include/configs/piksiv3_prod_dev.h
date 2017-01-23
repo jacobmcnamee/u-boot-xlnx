@@ -19,6 +19,10 @@
 
 #define CONFIG_HW_WDT_DIS_MIO 0
 
+#define CONFIG_SWDT
+#define CONFIG_SWDT_CRV 200
+#define CONFIG_SWDT_CLKSEL 0x3
+
 #include <configs/piksiv3_dev.h>
 
 #endif /* __CONFIG_PIKSIV3_PROD_DEV_H */
