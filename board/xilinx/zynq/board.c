@@ -27,6 +27,7 @@
 
 #define REG_SWDT_MODE     0xF8005000U
 #define REG_SWDT_CONTROL  0xF8005004U
+#define REG_SWDT_RESTART  0xF8005008U
 
 #define MIO_CFG_INPUT_PU  0x1601
 #define MIO_CFG_DEFAULT   0x1601
@@ -370,6 +371,7 @@ int board_late_init(void)
   writel((0x248 << 14) | ((CONFIG_SWDT_CRV) << 2) |
          ((CONFIG_SWDT_CLKSEL) << 0), REG_SWDT_CONTROL);
   writel((0xABC << 12) | 0x3, REG_SWDT_MODE);
+  writel(0x1999, REG_SWDT_RESTART);
 #endif
 #endif
 
